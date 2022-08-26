@@ -1,0 +1,15 @@
+<div mat-dialog-content class="dialog-ctn">
+    <h1>{{queue.name}}</h1>
+    <div class="line-lg"></div>
+    <h3 class="mt-0">Nomor Antrian anda :</h3>
+    <h1 class="text-large">{{queue.queueNumber}}</h1>
+    <h3 class="mt-0">Mohon Menunggu :</h3>
+    <ngx-barcode [bc-value]="'A001'" [bc-display-value]="false" [bc-width]="3" [bc-text-position]="'bottom'"
+        [bc-font-size]="26" class="barcode"></ngx-barcode>
+
+    <h3 class="mb-0">{{date | date:'MM/dd/yyyy, h:mm:ss a'}}</h3>
+    <div class="line-sm"></div>
+    <h3 class="mb-0">Budayakan antri untuk kenyamanan bersama</h3>
+    <h3 class="mt-0">Terima Kasih atas kunjungan anda</h3>
+
+</div>

@@ -1,0 +1,6 @@
+.barcode {
+  text-align: center;
+}
+.mat-dialog-content.dialog-ctn {
+    max-height: 100vh !important;
+}
