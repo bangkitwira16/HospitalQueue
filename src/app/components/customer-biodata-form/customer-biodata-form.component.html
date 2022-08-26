@@ -1,0 +1,67 @@
+<h1>Customer Biodata</h1>
+<form [formGroup]="customerForm">
+    <mat-grid-list cols="2" rowHeight="80" class="biodata-form" gutterSize="30px">
+        <mat-grid-tile>
+            <mat-form-field class="full-width">
+                <mat-label>Customer Name</mat-label>
+                <input matInput placeholder="Input customer name" formControlName="name">
+                <mat-error *ngIf="customerForm.controls['name'].hasError('required') &&
+            (customerForm.controls['name'].dirty ||
+              customerForm.controls['name'].touched)">Name is required</mat-error>
+            </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <mat-form-field class="full-width">
+                <mat-label>Address</mat-label>
+                <textarea matInput placeholder="Input customer address" formControlName="address"></textarea>
+                <mat-error *ngIf="customerForm.controls['address'].hasError('required') &&
+            (customerForm.controls['address'].dirty ||
+              customerForm.controls['address'].touched)">Address is required</mat-error>
+            </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <mat-form-field class="full-width">
+                <mat-label>ID Number</mat-label>
+                <input type="number" matInput placeholder="Input customer ID number" formControlName="IDNumber">
+                <mat-error *ngIf="customerForm.controls['IDNumber'].hasError('required') &&
+            (customerForm.controls['IDNumber'].dirty ||
+              customerForm.controls['IDNumber'].touched)">ID Number is required</mat-error>
+            </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <mat-form-field class="full-width">
+                <mat-label>Phone Number</mat-label>
+                <input matInput type="number" placeholder="Input customer phone number" formControlName="phone">
+                <mat-error *ngIf="customerForm.controls['phone'].hasError('required') &&
+            (customerForm.controls['phone'].dirty ||
+              customerForm.controls['phone'].touched)">Phone is required</mat-error>
+            </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <mat-form-field class="full-width">
+                <mat-label>BPJS Number</mat-label>
+                <input matInput type="number" placeholder="Input customer BPJS number" formControlName="BPJS">
+                <mat-error *ngIf="customerForm.controls['BPJS'].hasError('required') &&
+            (customerForm.controls['BPJS'].dirty ||
+              customerForm.controls['BPJS'].touched)">BPJS is required</mat-error>
+            </mat-form-field>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <mat-form-field class="full-width">
+                <mat-label>Gender</mat-label>
+                <mat-select formControlName="gender">
+                    <mat-option *ngFor="let gender of genders" [value]="gender.value">
+                        {{gender.label}}
+                    </mat-option>
+                </mat-select>
+                <mat-error *ngIf="customerForm.controls['gender'].hasError('required') &&
+            (customerForm.controls['gender'].dirty ||
+              customerForm.controls['gender'].touched)">Gender is required</mat-error>
+            </mat-form-field>
+        </mat-grid-tile>
+    </mat-grid-list>
+    <div class="button-customer">
+        <button mat-raised-button color="primary" (click)="submit()">{{isLoading ? 'Submitting...' : 'Add
+            Customer'}}</button>
+    </div>
+</form>
