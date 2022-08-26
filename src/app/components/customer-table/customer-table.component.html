@@ -1,0 +1,62 @@
+<div fxLayout="row" fxLayoutAlign="space-between center">
+    <mat-form-field>
+        <mat-label>Search</mat-label>
+        <input matInput (keyup)="searchCustomer($event)" placeholder="Search customer name" #input>
+    </mat-form-field>
+    <div fxLayout="row" fxLayoutGap="15px">
+        <button mat-mini-fab [color]=" genderFilter === 'male' ? 'primary': 'basic'" (click)="changeGender('male')">
+            <mat-icon>man</mat-icon>
+        </button>
+        <button mat-mini-fab [color]=" genderFilter === 'female' ? 'primary': 'basic'" (click)="
+            changeGender('female')">
+            <mat-icon>woman</mat-icon>
+        </button>
+    </div>
+</div>
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="No">
+            <th mat-header-cell *matHeaderCellDef> No. </th>
+            <td mat-cell *matCellDef="let index = index"> {{index + 1}} </td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+        <!-- Address Column -->
+        <ng-container matColumnDef="address">
+            <th mat-header-cell *matHeaderCellDef> Address </th>
+            <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+        </ng-container>
+
+        <!-- BPJS Column -->
+        <ng-container matColumnDef="BPJS">
+            <th mat-header-cell *matHeaderCellDef> BPJS </th>
+            <td mat-cell *matCellDef="let element"> {{element.BPJS}} </td>
+        </ng-container>
+
+        <!-- Gender Column -->
+        <ng-container matColumnDef="gender">
+            <th mat-header-cell *matHeaderCellDef> Gender </th>
+            <td mat-cell *matCellDef="let element">
+                <mat-icon>{{element.gender === 'male' ? 'man' : 'woman'}}</mat-icon>
+            </td>
+        </ng-container>
+
+        <!-- Gender Column -->
+        <ng-container matColumnDef="createdAt">
+            <th mat-header-cell *matHeaderCellDef> Created At </th>
+            <td mat-cell *matCellDef="let element"> {{element.createdAt | date:'dd MM yyyy hh:mm'}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>
